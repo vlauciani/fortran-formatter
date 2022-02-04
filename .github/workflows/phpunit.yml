@@ -21,6 +21,12 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: list
+      run: ls -l && pwd
+
+    - name: pippo
+      run: ls -l /home/runner/work/fortran-formatter/fortran-formatter/ /home/runner/work/fortran-formatter/fortran-formatter/tests/ /home/runner/work/fortran-formatter/fortran-formatter/vendor/
+
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
