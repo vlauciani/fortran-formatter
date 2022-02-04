@@ -1,0 +1,31 @@
+{
+    "name": "vlauciani/fortran-formatter",
+    "description": "PHP Fortran Formatter",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Valentino Lauciani",
+            "email": "vlauciani@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Vlauciani\\FortranFormatter\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Vlauciani\\FortranFormatter\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^7.2|^8.0",
+        "illuminate/support": "^7.0|^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^5.0|^6.0",
+        "phpunit/phpunit": "^8.5.8|^9.3.3"
+    }
+}
