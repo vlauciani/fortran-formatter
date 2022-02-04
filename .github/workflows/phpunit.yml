@@ -1,35 +1,28 @@
-name: Tests
+name: Code Tests
 
 on:
-  push:
-  pull_request:
-  schedule:
-    - cron: '0 0 * * *'
+    pull_request: null
 
 jobs:
-  tests:
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: true
-      matrix:
-        php: [8.0, 8.1]
-        dependency-version: [prefer-stable]
+    tests:
+        strategy:
+            matrix:
+                php:
+                    - 8.0
 
-    name: PHP ${{ matrix.php }} ${{ matrix.dependency-version }}
+        name: Test ${{ matrix.php }}
+        runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+        steps:
+            -   uses: actions/checkout@v2
 
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: ${{ matrix.php }}
-        tools: composer
-        coverage: xdebug
+            -   uses: shivammathur/setup-php@v1
+                with:
+                    php-version: ${{ matrix.php }}
+                    extensions: pdo_sqlite, pdo_mysql, pdo_pgsql
+                    coverage: none
 
-    - name: Install PHP dependencies
-      run: composer update --${{ matrix.dependency-version }} --no-interaction --prefer-dist --no-progress --ansi
+            -   run: composer install --no-progress
 
-    - name: Run Unit Tests
-      run: vendor/bin/phpunit --colors=always
+            -   run: vendor/bin/phpunit
+
