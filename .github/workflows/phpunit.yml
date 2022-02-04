@@ -1,30 +1,35 @@
-name: phpunit
+name: Tests
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
-  build:
-
+  tests:
     runs-on: ubuntu-latest
-
     strategy:
+      fail-fast: true
       matrix:
-        php-versions: ['7.3', '7.4', '8.0', '8.1']
+        php: [8.0, 8.1]
+        dependency-version: [prefer-lowest, prefer-stable]
+
+    name: PHP ${{ matrix.php }} ${{ matrix.dependency-version }}
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
 
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: ${{ matrix.php-versions }}
-        extensions: mbstring, gd, bcmath, imagick
+        php-version: ${{ matrix.php }}
+        tools: composer
+        coverage: xdebug
 
-    - name: Validate composer.json
-      run: composer validate
+    - name: Install PHP dependencies
+      run: composer update --${{ matrix.dependency-version }} --no-interaction --prefer-dist --no-progress --ansi
 
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
-
-    - name: Run test suite
-      run: composer test:ci
+    - name: Run Unit Tests
+      run: vendor/bin/phpunit --colors=always
