@@ -1,6 +1,6 @@
 {
     "name": "vlauciani/fortran-formatter",
-    "description": "PHP Fortran-Formatter",
+    "description": "PHP Fortran Formatter",
     "type": "project",
     "license": "MIT",
     "authors": [
