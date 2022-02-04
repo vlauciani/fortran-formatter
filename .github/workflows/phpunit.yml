@@ -32,8 +32,14 @@ jobs:
       #run: composer update --${{ matrix.dependency-version }} --no-interaction --prefer-dist --no-progress --ansi
       run: composer install --no-interaction
 
-    - name: lisst
+    - name: list
       run: ls -l && pwd 
+
+    - name: pippo
+      run: ls -l /home/runner/work/fortran-formatter/fortran-formatter/tests/
+
+    - name: pippo2
+      run: ls -l /home/runner/work/fortran-formatter/fortran-formatter/src/
 
     - name: Run Unit Tests
       run: vendor/bin/phpunit --verbose
