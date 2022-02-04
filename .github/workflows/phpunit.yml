@@ -36,10 +36,7 @@ jobs:
       run: ls -l && pwd 
 
     - name: pippo
-      run: ls -l /home/runner/work/fortran-formatter/fortran-formatter/tests/
-
-    - name: pippo2
-      run: ls -l /home/runner/work/fortran-formatter/fortran-formatter/src/
+      run: ls -l /home/runner/work/fortran-formatter/fortran-formatter/ /home/runner/work/fortran-formatter/fortran-formatter/tests/ /home/runner/work/fortran-formatter/fortran-formatter/vendor/ 
 
     - name: Run Unit Tests
       run: vendor/bin/phpunit --verbose
