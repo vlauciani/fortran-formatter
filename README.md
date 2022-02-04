@@ -3,7 +3,6 @@
 ## Import package
 
 ### Require package
-#### Using docker under php project developed with 'laradock' project (http://laradock.io):
 ```
 composer require vlauciani/fortran-formatter
 ```
