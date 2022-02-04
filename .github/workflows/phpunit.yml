@@ -33,7 +33,7 @@ jobs:
       run: composer install --no-interaction
 
     - name: lisst
-      run: ls -l 
+      run: ls -l && pwd 
 
     - name: Run Unit Tests
       run: vendor/bin/phpunit --verbose
