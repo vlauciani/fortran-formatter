@@ -35,14 +35,8 @@ jobs:
         coverage: xdebug
 
     - name: Install PHP dependencies
-      #run: composer update --${{ matrix.dependency-version }} --no-interaction --prefer-dist --no-progress --ansi
-      run: composer install --no-interaction
-
-    - name: list
-      run: ls -l && pwd 
-
-    - name: pippo
-      run: ls -l /home/runner/work/fortran-formatter/fortran-formatter/ /home/runner/work/fortran-formatter/fortran-formatter/tests/ /home/runner/work/fortran-formatter/fortran-formatter/vendor/ 
+      run: composer update --${{ matrix.dependency-version }} --no-interaction --prefer-dist --no-progress --ansi
+      #run: composer install --no-interaction
 
     - name: Run Unit Tests
       run: vendor/bin/phpunit --verbose
