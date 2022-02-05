@@ -40,5 +40,5 @@ Here is a list of users who already contributed to this repository:
 </a>
 
 ## Author
-(c) 2019 Valentino Lauciani vlauciani[at]gmail.com
+(c) 2022 Valentino Lauciani vlauciani[at]gmail.com
 
