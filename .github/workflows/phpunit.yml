@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [8.0, 8.1]
+        php: [7.4, 8.0, 8.1]
         dependency-version: [prefer-stable]
 
     name: PHP ${{ matrix.php }} ${{ matrix.dependency-version }}
@@ -21,19 +21,15 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: list
-      run: ls -l && pwd
-
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ matrix.php }}
         tools: composer
-        coverage: xdebug
+        #coverage: xdebug
 
     - name: Install PHP dependencies
       run: composer update --${{ matrix.dependency-version }} --no-interaction --prefer-dist --no-progress --ansi
-      #run: composer install --no-interaction
 
     - name: Run Unit Tests
       run: vendor/bin/phpunit --verbose
