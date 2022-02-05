@@ -13,7 +13,7 @@ composer require vlauciani/fortran-formatter
 <?php
 namespace App\Api\Controllers;
 use App\Http\Controllers\Controller;
-use Vlauciani\FortranFormatter\Traits\FortranFormatTrait;
+use VLauciani\FortranFormatter\Traits\FortranFormatTrait;
 
 class MyController extends Controller
 {
