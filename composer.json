@@ -12,12 +12,12 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "Vlauciani\\FortranFormatter\\": "src/"
+            "VLauciani\\FortranFormatter\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Vlauciani\\FortranFormatter\\Tests\\": "tests/"
+            "VLauciani\\FortranFormatter\\Tests\\": "tests/"
         }
     },
     "require": {

@@ -1,5 +1,5 @@
 <?php
-namespace Vlauciani\FortranFormatter\Traits;
+namespace VLauciani\FortranFormatter\Traits;
  
 trait FortranFormatTrait {
 

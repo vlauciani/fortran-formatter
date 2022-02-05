@@ -1,9 +1,9 @@
 <?php
 
-namespace Vlauciani\FortranFormatter\Tests;
+namespace VLauciani\FortranFormatter\Tests;
 
 use Orchestra\Testbench\TestCase;
-use Vlauciani\FortranFormatter\Traits\FortranFormatTrait;
+use VLauciani\FortranFormatter\Traits\FortranFormatTrait;
 
 
 class FortranFormatterTestTest extends TestCase
