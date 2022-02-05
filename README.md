@@ -1,4 +1,7 @@
-# fortran-formatter [![pipeline status](https://gitlab.rm.ingv.it/caravel/php-pkg/fortran-formatter/badges/main/pipeline.svg)](https://gitlab.rm.ingv.it/caravel/php-pkg/fortran-formatter/-/commits/main)
+# fortran-formatter
+[![Tests](https://github.com/vlauciani/fortran-formatter/actions/workflows/phpunit.yml/badge.svg)](https://github.com/vlauciani/fortran-formatter/actions)
+[![Packagist License](https://poser.pugx.org/vlauciani/fortran-formatter/license.png)](http://choosealicense.com/licenses/mit/)
+[![Total Downloads](https://poser.pugx.org/vlauciani/fortran-formatter/d/total.png)](https://packagist.org/packages/vlauciani/fortran-formatter)
 
 ## Import package
 
