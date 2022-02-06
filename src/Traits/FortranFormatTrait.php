@@ -1,6 +1,6 @@
 <?php
 
-namespace Ingv\Hyp2000Converter\Traits;
+namespace VLauciani\FortranFormatter\Traits;
 
 trait FortranFormatTrait
 {
