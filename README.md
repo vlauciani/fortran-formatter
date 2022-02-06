@@ -5,7 +5,7 @@
 
 ## Installation
 ```
-composer require vlauciani/fortran-formatter
+composer require vlauciani/fortran-formatter:^1.0.0
 ```
 
 ## Usage
