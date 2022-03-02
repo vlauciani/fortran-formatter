@@ -521,7 +521,7 @@ class FortranFormatterTestTest extends TestCase
         $this->assertEquals('    932', self::fromFortranFormatToString('F7.2', '9.32', $str_pad_string));
 
         // old - float
-        $this->assertEquals('*0.01', self::fromFortranFormatToString('F5.2', '1', $str_pad_string, STR_PAD_LEFT, 'old'));
+        $this->assertEquals(' 0.01', self::fromFortranFormatToString('F5.2', '1', $str_pad_string, STR_PAD_LEFT, 'old'));
         $this->assertEquals('    633', self::fromFortranFormatToString('F7.2', '6.33', $str_pad_string, STR_PAD_LEFT, 'old'));
         $this->assertEquals('    467', self::fromFortranFormatToString('F7.2', '4.67', $str_pad_string, STR_PAD_LEFT, 'old'));
         $this->assertEquals('    634', self::fromFortranFormatToString('F7.2', '6.34', $str_pad_string, STR_PAD_LEFT, 'old'));
