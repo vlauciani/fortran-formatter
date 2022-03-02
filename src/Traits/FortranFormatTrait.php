@@ -241,38 +241,41 @@ trait FortranFormatTrait
 
                 if ($float_format == 'old') {
                     $c = $explode__format_value[1];
-                    $value = number_format($value, $c, '.', '');
-                    //echo "start__value:" . $value . "<br>";
+                    $valueNew = number_format($value, $c, '.', '');
+                    //echo "start__value:" . $valueNew . "<br>";
                     //echo "start__c:" . $c . "<br>";
                     //echo "explode__format_value[0]:" . $explode__format_value[0] . "<br><br>";
                     $exit = 0;
-                    while (strlen($value) > $explode__format_value[0] && $exit == 0) {
-                        //echo "strln(value):" . strlen($value) . "<br>";
+                    while (strlen($valueNew) > $explode__format_value[0] && $exit == 0) {
+                        //echo "strln(value):" . strlen($valueNew) . "<br>";
                         //echo "c:" . $c . "<br>";
                         if ($c == 0) {
                             echo "exit=1<br>";
                             $exit = 1;
                         } else {
                             $c = ($c - 1);
-                            $value = number_format($value, $c, '.', '');
-                            //echo "value:" . $value . "<br><br>";
+                            $valueNew = number_format($valueNew, $c, '.', '');
+                            //echo "value:" . $valueNew . "<br><br>";
                         }
                     }
-                    //echo "value_just_exit:" . $value . "<br><br>";
+                    //echo "value_just_exit:" . $valueNew . "<br><br>";
                     if ($exit == 1 || $c == 0) {
                         //echo "A<br>";
-                        $return = number_format($value, 0, '.', '') . '.';
+                        $return = number_format($valueNew, 0, '.', '') . '.';
                         if (strlen($return) > $explode__format_value[0]) {
                             $return = str_pad('', $explode__format_value[0], '*', $str_pad_type);
                         }
                     } else {
                         //echo "B<br>";
-                        $a = number_format($value, $c, '.', '');
+                        $a = number_format($valueNew, $c, '.', '');
                         $return = str_pad($a, $explode__format_value[0], $str_pad_string, $str_pad_type);
                         //echo "B1<br>";
                     }
                 }
-
+                //\Log::debug("TRAIT - " . __CLASS__ . ' -> ' . __FUNCTION__ . ' -> $format=' . $format . ', $value=' . $value . ', $return(len=' . strlen($return) . ')=|' . $return . '|');
+                //if ($value != 0) {
+                //    \Log::debug('|$this->assertEquals(\'' . $return . '\', self::fromFortranFormatToString(\'' . $format . '\', \'' . $value . '\', $str_pad_string));|');
+                //}
                 return $return;
                 break;
             case 'A':
