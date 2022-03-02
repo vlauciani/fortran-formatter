@@ -158,11 +158,13 @@ trait FortranFormatTrait
                     '.',
                     $format_value
                 );
-
+                /*
+                \Log::debug("TRAIT - value=" . $value);
                 if (!str_contains($value, '.')) {
                     (float)$value = $value / pow(10, $explode__format_value[1]);
                 }
-
+                \Log::debug("TRAIT - value1=" . $value);
+                */
                 if (is_null($value)) {
                     $value = 0;
                 }
@@ -250,7 +252,7 @@ trait FortranFormatTrait
                         //echo "strln(value):" . strlen($valueNew) . "<br>";
                         //echo "c:" . $c . "<br>";
                         if ($c == 0) {
-                            echo "exit=1<br>";
+                            //echo "exit=1<br>";
                             $exit = 1;
                         } else {
                             $c = ($c - 1);
@@ -272,7 +274,7 @@ trait FortranFormatTrait
                         //echo "B1<br>";
                     }
                 }
-                //\Log::debug("TRAIT - " . __CLASS__ . ' -> ' . __FUNCTION__ . ' -> $format=' . $format . ', $value=' . $value . ', $return(len=' . strlen($return) . ')=|' . $return . '|');
+                \Log::debug("TRAIT - " . __CLASS__ . ' -> ' . __FUNCTION__ . ' -> $format=' . $format . ', $value=' . $value . ', $return(len=' . strlen($return) . ')=|' . $return . '|');
                 //if ($value != 0) {
                 //    \Log::debug('|$this->assertEquals(\'' . $return . '\', self::fromFortranFormatToString(\'' . $format . '\', \'' . $value . '\', $str_pad_string));|');
                 //}
