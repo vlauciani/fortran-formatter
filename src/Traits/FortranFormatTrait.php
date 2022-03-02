@@ -158,13 +158,7 @@ trait FortranFormatTrait
                     '.',
                     $format_value
                 );
-                /*
-                \Log::debug("TRAIT - value=" . $value);
-                if (!str_contains($value, '.')) {
-                    (float)$value = $value / pow(10, $explode__format_value[1]);
-                }
-                \Log::debug("TRAIT - value1=" . $value);
-                */
+
                 if (is_null($value)) {
                     $value = 0;
                 }
@@ -274,10 +268,21 @@ trait FortranFormatTrait
                         //echo "B1<br>";
                     }
                 }
-                \Log::debug("TRAIT - " . __CLASS__ . ' -> ' . __FUNCTION__ . ' -> $format=' . $format . ', $value=' . $value . ', $return(len=' . strlen($return) . ')=|' . $return . '|');
-                //if ($value != 0) {
-                //    \Log::debug('|$this->assertEquals(\'' . $return . '\', self::fromFortranFormatToString(\'' . $format . '\', \'' . $value . '\', $str_pad_string));|');
-                //}
+                //\Log::debug("TRAIT - " . __CLASS__ . ' -> ' . __FUNCTION__ . ' -> $format=' . $format . ', $value=' . $value . ', $return(len=' . strlen($return) . ')=|' . $return . '|');
+
+                /* To write test case */
+                /*
+                if ($value != 0) {
+                    if ($float_format == 'old') {
+                        $valueToLog = $valueNew;
+                        $valueToLogExtra = ', STR_PAD_LEFT, \'old\'';
+                    } else {
+                        $valueToLog = $value;
+                        $valueToLogExtra = '';
+                    }
+                    \Log::debug('|$this->assertEquals(\'' . $return . '\', self::fromFortranFormatToString(\'' . $format . '\', \'' . $valueToLog . '\', $str_pad_string' . $valueToLogExtra . '));|');
+                }
+                */
                 return $return;
                 break;
             case 'A':
