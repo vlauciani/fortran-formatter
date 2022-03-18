@@ -271,7 +271,6 @@ trait FortranFormatTrait
                     return substr($kk, 0, $f);
                 }
 
-                dd($p, $fractional_rounded_by_format_value, $value, $return, $explode__format_value);
                 // Check that result doesn't contain only '0'
                 if (empty(str_replace("0", '', $return))) {
                     $return = str_replace("0", $str_pad_string, $return);
