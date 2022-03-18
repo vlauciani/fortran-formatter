@@ -258,7 +258,7 @@ trait FortranFormatTrait
                     /* Passo da '0.12' a '.12' */
                     if (intval($value) == 0) {
                         $kk = substr($kk, 1);
-                    } else if (strlen($k) > strlen(intval($value))) { /*  Il numero arrotondato e' maggiore del numero richeistp; se ho 999.9123 a F3.0, non posso scrivere 1000 e quindi errore */
+                    } else if (strlen(intval($k)) > $f) { /*  Il numero arrotondato e' maggiore del numero richeistp; se ho 999.9123 a F3.0, non posso scrivere 1000 e quindi errore */
                         return str_pad(
                             '',
                             $f,
