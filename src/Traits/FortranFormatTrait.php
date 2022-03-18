@@ -224,11 +224,20 @@ trait FortranFormatTrait
                     }
                     $return .= $fraction;
                 } else if ($explode__format_value[1] == 0) {
-                    /* if '$value=22.995' formatted by 'F5.2' this variable will be 0.99 */
-                    $fractional_rounded_by_format_value = round($value - intval($value), 1);
-
                     /* if '$format=F3.0' it will be '3' */
                     $f = $explode__format_value[0];
+
+                    if ($value == 0) {
+                        return str_pad(
+                            '',
+                            $f,
+                            $str_pad_string,
+                            STR_PAD_RIGHT
+                        );
+                    }
+
+                    /* if '$value=22.995' formatted by 'F5.2' this variable will be 0.99 */
+                    $fractional_rounded_by_format_value = round($value - intval($value), 1);
 
                     if (intval($value) == 0) {
                         $r = ($f - 1);
