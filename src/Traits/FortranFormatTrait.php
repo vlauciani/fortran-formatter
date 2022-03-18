@@ -223,8 +223,58 @@ trait FortranFormatTrait
                         }
                     }
                     $return .= $fraction;
+                } else if ($explode__format_value[1] == 0) {
+                    /* if '$value=22.995' formatted by 'F5.2' this variable will be 0.99 */
+                    $fractional_rounded_by_format_value = round($value - intval($value), 1);
+
+                    /* if '$format=F3.0' it will be '3' */
+                    $f = $explode__format_value[0];
+
+                    if (intval($value) == 0) {
+                        $r = ($f - 1);
+                    } else {
+                        /**
+                         * Faccio il round() del $value arrotondato a '3' (deriva da F3.0) meno il numero di interi del $value
+                         *  poi sottraggo ancora '-1' che e' l'occupazione in caratteri del (punto) '.'.
+                         * Quindi in caso di '$value=19.285', $k e' uguale a round(19.285, (2 - 1));
+                         *  Con:
+                         *   '2': il numero di interi di $value, '19'
+                         *   '1': il punto considerato come carattere
+                         * Il risultato e' un float: '19.0'
+                         */
+                        $r = ($f - strlen(intval($value)) - 1);
+                    }
+                    if ($r < 0) {
+                        $r = 0;
+                    }
+                    $k = round($value, $r);
+
+                    /* Cerco se all'interno di $k c'e' il punto; questo perche un float 19.0 convertito in stringa diventa 19 */
+                    $kk = strval($k);
+                    if (!strpos($kk, '.')) {
+                        $kk .= '.';
+                    }
+
+                    /* Passo da '0.12' a '.12' */
+                    if (intval($value) == 0) {
+                        $kk = substr($kk, 1);
+                    }
+
+                    /*  Il numero arrotondato e' maggiore del numero richeistp; se ho 999.9123 a F3.0, non posso scrivere 1000 e quindi errore */
+                    if (strlen($k) > strlen(intval($value))) {
+                        return str_pad(
+                            '',
+                            $f,
+                            '*',
+                            STR_PAD_RIGHT
+                        );
+                    }
+
+                    /* Cmq ritorno solo un valore come $f; quindi se F3.0 ritorno solo 3 caratteri */
+                    return substr($kk, 0, $f);
                 }
 
+                dd($p, $fractional_rounded_by_format_value, $value, $return, $explode__format_value);
                 // Check that result doesn't contain only '0'
                 if (empty(str_replace("0", '', $return))) {
                     $return = str_replace("0", $str_pad_string, $return);
