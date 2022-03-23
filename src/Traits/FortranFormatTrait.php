@@ -236,7 +236,7 @@ trait FortranFormatTrait
                         );
                     }
 
-                    /* if '$value=22.995' formatted by 'F5.2' this variable will be 0.99 */
+                    /* if '$value=5.585' formatted by 'F3.0' this variable will be 0.6 */
                     $fractional_rounded_by_format_value = round($value - intval($value), 1);
 
                     if (intval($value) == 0) {
@@ -265,9 +265,9 @@ trait FortranFormatTrait
                     }
 
                     /* Passo da '0.12' a '.12' */
-                    if (intval($value) == 0) {
+                    if (intval($value) == 0 && intval($fractional_rounded_by_format_value) == 0) {
                         $kk = substr($kk, 1);
-                    } else if (strlen(intval($k)) > $f) { /*  Il numero arrotondato e' maggiore del numero richeistp; se ho 999.9123 a F3.0, non posso scrivere 1000 e quindi errore */
+                    } else if (strlen(intval($k)) > $f) { /*  Il numero arrotondato e' maggiore del numero richeisto; se ho 999.9123 a F3.0, non posso scrivere 1000 e quindi errore */
                         return str_pad(
                             '',
                             $f,
@@ -276,8 +276,12 @@ trait FortranFormatTrait
                         );
                     }
 
-                    /* Cmq ritorno solo un valore come $f; quindi se F3.0 ritorno solo 3 caratteri */
-                    return substr($kk, 0, $f);
+                    /**
+                     *  Con:
+                     *   - 'str_pad', aggiungo tanti '0' a destra per far si che il totale dei caratteri sia $f (es: 3)
+                     *   - 'substr()' ritorno solo un valore come $f di caratteri
+                     */
+                    return substr(str_pad($kk, $f, '0', STR_PAD_RIGHT), 0, $f);
                 }
 
                 // Check that result doesn't contain only '0'
