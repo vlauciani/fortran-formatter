@@ -550,8 +550,8 @@ class FortranFormatterTestTest extends TestCase
         $this->assertEquals('3.0', self::fromFortranFormatToString('F3.0', '3.045', $str_pad_string, STR_PAD_LEFT, 'old'));
         $this->assertEquals('1.0', self::fromFortranFormatToString('F3.0', '0.9985', $str_pad_string, STR_PAD_LEFT, 'old'));
         $this->assertEquals('***', self::fromFortranFormatToString('F3.0', '999.9234', $str_pad_string, STR_PAD_LEFT, 'old'));
-        $this->assertEquals('0.5', self::fromFortranFormatToString('F3.2', '0.49000000953674', $str_pad_string, 'old'));
-        $this->assertEquals('-.4', self::fromFortranFormatToString('F3.2', '-0.444343', $str_pad_string, 'old'));
+        $this->assertEquals('0.5', self::fromFortranFormatToString('F3.2', '0.49000000953674', $str_pad_string, STR_PAD_LEFT, 'old'));
+        $this->assertEquals('-.4', self::fromFortranFormatToString('F3.2', '-0.444343', $str_pad_string, STR_PAD_LEFT, 'old'));
         $this->assertEquals('   2.97', self::fromFortranFormatToString('F7.2', '2.97', $str_pad_string, STR_PAD_LEFT, 'old'));
         $this->assertEquals('   2.72', self::fromFortranFormatToString('F7.2', '2.72', $str_pad_string, STR_PAD_LEFT, 'old'));
         $this->assertEquals('   2.98', self::fromFortranFormatToString('F7.2', '2.98', $str_pad_string, STR_PAD_LEFT, 'old'));
